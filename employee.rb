@@ -30,24 +30,14 @@ employee2 = {last_name: "Campos", salary: 80000, active: false, first_name: "Dan
 
 # Class
 
-
 class Employee
+  attr_reader :first_name, :active
+  attr_writer :active
+  
   def initialize(input_first_name, input_last_name, input_salary, input_active)
     @first_name = input_first_name
     @last_name = input_last_name
     @salary = input_salary
-    @active = input_active
-  end
-
-  def first_name
-    @first_name
-  end
-
-  def active
-    @active
-  end
-
-  def active=(input_active)
     @active = input_active
   end
 
@@ -71,5 +61,6 @@ p employee2.active
 employee2.active = true
 p employee2.active
 
+
 # employee2.give_annual_raise
-# employee2.print_info
+employee2.print_info
