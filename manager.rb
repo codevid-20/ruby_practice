@@ -20,9 +20,9 @@ class Employee
   end
 end
 
-# employee1 = Employee.new("Majora", "Carter", 70000, true)
+employee1 = Employee.new(first_name: "Majora", last_name: "Carter", salary: 70000, active: true)
 
-# employee1.print_info
+employee1.print_info
 
 # original
 # employee2 = Employee.new({:first_name => "Danilo", :last_name => "Campos", :salary => 80000, :active => true})
@@ -40,6 +40,11 @@ employee2 = Employee.new(first_name: "Danilo", last_name: "Campos", salary: 8000
 
 
 class Manager < Employee
+  def initialize(input_options)    
+    super
+    @employees = input_options[:employees]
+  end
+  
   def send_report
     p "sending report"
     # some code that sends emails
@@ -48,7 +53,7 @@ class Manager < Employee
 end
 
 
-manager = Manager.new({first_name: "Manny", last_name: "Mars", salary: 100000, active: true})
+manager = Manager.new({first_name: "Manny", last_name: "Mars", salary: 100000, active: true, employees: [employee1, employee2]})
 
 manager.print_info
 manager.send_report
