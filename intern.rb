@@ -1,3 +1,12 @@
+module EmailReportable
+  def send_report
+    p "sending report"
+    # some code that sends emails
+    p "totally just sent the report"
+  end
+end
+
+
 
 class Employee
   attr_reader :first_name, :active
@@ -40,6 +49,8 @@ employee2 = Employee.new(first_name: "Danilo", last_name: "Campos", salary: 8000
 
 
 class Manager < Employee
+  include EmailReportable
+  
   def initialize(input_options)    
     super
     @employees = input_options[:employees]
@@ -60,26 +71,35 @@ class Manager < Employee
     # fire them
   end
   
-  def send_report
-    p "sending report"
-    # some code that sends emails
-    p "totally just sent the report"
-  end
 end
 
 
 manager = Manager.new(first_name: "Manny", last_name: "Mars", salary: 100000, active: true, employees: [employee1, employee2])
 
-manager.print_info
+# manager.print_info
 manager.send_report
 
-p employee1.active
-p employee2.active
+# p employee1.active
+# p employee2.active
 
 manager.fire_all_employees
 
 p "-" * 10
 
-p employee1.active
-p employee2.active
+# p employee1.active
+# p employee2.active
 
+
+# intern
+# can do everything an employee can do
+# and it can also send reports
+
+class Intern < Employee
+  include EmailReportable
+end
+
+intern = Intern.new(first_name: "Ingrid", last_name: "Ingerssonn", salary: 0, active: true)
+
+intern.print_info
+
+intern.send_report
