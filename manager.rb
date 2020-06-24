@@ -49,8 +49,10 @@ class Manager < Employee
     # give all the employees raises
     
     # find the employees
-    @employees[0].give_annual_raise
-    @employees[1].give_annual_raise
+    
+    @employees.each do |employee|
+      employee.give_annual_raise
+    end
     # go to each of them
     # give them a raise
   end
@@ -65,8 +67,8 @@ end
 
 manager = Manager.new(first_name: "Manny", last_name: "Mars", salary: 100000, active: true, employees: [employee1, employee2])
 
-# manager.print_info
-# manager.send_report
+manager.print_info
+manager.send_report
 
 employee1.print_info
 employee2.print_info
