@@ -27,7 +27,7 @@ employee1 = Employee.new(first_name: "Majora", last_name: "Carter", salary: 7000
 # original
 # employee2 = Employee.new({:first_name => "Danilo", :last_name => "Campos", :salary => 80000, :active => true})
 
-employee2 = Employee.new(first_name: "Danilo", last_name: "Campos", salary: 80000, active: true)
+employee2 = Employee.new(first_name: "Danilo", last_name: "Campos", salary: 80000, active: false)
 
 
 # p employee2.active
@@ -46,15 +46,18 @@ class Manager < Employee
   end
 
   def give_all_raises
-    # give all the employees raises
-    
-    # find the employees
-    
     @employees.each do |employee|
       employee.give_annual_raise
     end
-    # go to each of them
-    # give them a raise
+  end
+
+  def fire_all_employees
+    # get the employees
+    @employees.each do |employee|
+      employee.active = false
+    end
+    # go through each of them
+    # fire them
   end
   
   def send_report
@@ -70,13 +73,13 @@ manager = Manager.new(first_name: "Manny", last_name: "Mars", salary: 100000, ac
 manager.print_info
 manager.send_report
 
-employee1.print_info
-employee2.print_info
+p employee1.active
+p employee2.active
 
-manager.give_all_raises
+manager.fire_all_employees
 
 p "-" * 10
 
-employee1.print_info
-employee2.print_info
+p employee1.active
+p employee2.active
 
